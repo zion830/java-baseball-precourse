@@ -8,7 +8,6 @@ public class Judgement {
     public boolean checkResult(Integer[] player, Integer[] rival) {
         int strike = 0;
         int ball = 0;
-        int nothing = holdCount;
 
         for (int i = 0; i < player.length; i++) {
             if (player[i].equals(rival[i])) {
@@ -18,8 +17,7 @@ public class Judgement {
             }
         }
 
-        nothing -= (strike + ball);
-        printState(strike, ball, nothing);
+        printState(strike, ball);
         return (strike == holdCount);
     }
 
@@ -33,7 +31,13 @@ public class Judgement {
         return false;
     }
 
-    private void printState(int strike, int ball, int nothing) {
-        System.out.println(strike + " strike, " + ball + " ball, " + nothing + " nothing");
+    private void printState(int strike, int ball) {
+        int nothing = holdCount - (strike + ball);
+
+        if (nothing == holdCount) {
+            System.out.println("nothing");
+        } else {
+            System.out.println(strike + " strike, " + ball + " ball");
+        }
     }
 }
