@@ -24,14 +24,14 @@ public class Host {
         while (true) {
             if (judgement.checkResult(player.getNumbers(), rival.getNumbers())) {
                 System.out.println("정답입니다! 게임이 종료되었습니다.\n게임을 재시작하려면 1, 종료하려면 2를 입력해주세요.");
-                askGameProgress();
+                askNextStep();
             } else {
                 player.resetNumbers();
             }
         }
     }
 
-    private void askGameProgress() {
+    private void askNextStep() {
         String input;
 
         while (true) {
@@ -54,6 +54,7 @@ public class Host {
     private void endOfGame() {
         System.out.println("게임을 종료합니다. 이용해주셔서 감사합니다.");
         player.gameOver();
+        rival.gameOver();
         scanner.close();
         System.exit(0);
     }
